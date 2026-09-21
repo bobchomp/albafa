@@ -39,7 +39,8 @@ export default function CommunityClubsPage() {
         />
         <div className="relative mx-auto max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-            Our Community
+            <span className="lang-ga">Ar Coimhearsnachd</span>
+            <span className="lang-en">Our Community</span>
           </p>
           <h1 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
             <span className="lang-ga">Comann Ballrachd</span>
@@ -56,9 +57,17 @@ export default function CommunityClubsPage() {
             </span>
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-white/70 sm:text-base">
-            The organisation has publicly announced Inverness-shire (FC
-            Sonas), Glasgow and Uist as founding clubs, with 3 more to
-            follow in the coming years.
+            <span className="lang-ga">
+              Tha a&rsquo; bhuidheann air ainmeachadh gu poblach gur e
+              Siorrachd Inbhir Nis (FC Sonas), Glaschu agus Uibhist na
+              clubaichean-stèidheachaidh, le 3 eile ri thighinn anns na
+              bliadhnaichean a tha romhainn.
+            </span>
+            <span className="lang-en">
+              The organisation has publicly announced Inverness-shire (FC
+              Sonas), Glasgow and Uist as founding clubs, with 3 more to
+              follow in the coming years.
+            </span>
           </p>
         </div>
       </section>
@@ -86,9 +95,19 @@ export default function CommunityClubsPage() {
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink/70 sm:text-base">
-            A Gaelic Community Football Club is a community-based
-            organisation committed to providing consistent football
-            activity to both fluent Gaelic speakers and language learners.
+            <span className="lang-ga">
+              Tha Club Ball-Coise Coimhearsnachd Gàidhlig na bhuidheann
+              stèidhichte sa choimhearsnachd a tha dealasach a thaobh
+              gnìomhachd ball-coise chunbhalach a thabhann do
+              luchd-labhairt fileanta na Gàidhlig agus do
+              luchd-ionnsachaidh a&rsquo; chànain.
+            </span>
+            <span className="lang-en">
+              A Gaelic Community Football Club is a community-based
+              organisation committed to providing consistent football
+              activity to both fluent Gaelic speakers and language
+              learners.
+            </span>
           </p>
         </div>
 
