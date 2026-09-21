@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import AnnouncementBar from "./components/AnnouncementBar";
 import Header from "./components/Header";
+import Partners from "./components/Partners";
 import Footer from "./components/Footer";
 
 const poppins = Poppins({
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>
+        <Partners />
         <Footer />
       </body>
     </html>

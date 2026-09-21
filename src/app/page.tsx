@@ -3,7 +3,6 @@ import EuroJourney from "./components/EuroJourney";
 import JoinUs from "./components/JoinUs";
 import PillarsMarquee from "./components/PillarsMarquee";
 import Faqs from "./components/Faqs";
-import Partners from "./components/Partners";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <JoinUs />
       <PillarsMarquee />
       <Faqs />
-      <Partners />
     </>
   );
 }
