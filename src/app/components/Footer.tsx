@@ -24,7 +24,7 @@ const columns = [
     ga: "Cuidich Sinn",
     en: "Support Us",
     links: [
-      { ga: "Crannchur a’ Chluba", en: "Club Lotto" },
+      { ga: null, en: "Club Lotto" },
       { ga: "Dèan Tabhartas", en: "Donate" },
       { ga: "Bi nad Bhall", en: "Become a Member" },
     ],
@@ -63,8 +63,14 @@ export default function Footer() {
                 {column.links.map((link) => (
                   <li key={link.en}>
                     <DeadButton className="text-left text-sm text-white/70 hover:text-white">
-                      <span className="lang-ga">{link.ga}</span>
-                      <span className="lang-en">{link.en}</span>
+                      {link.ga ? (
+                        <>
+                          <span className="lang-ga">{link.ga}</span>
+                          <span className="lang-en">{link.en}</span>
+                        </>
+                      ) : (
+                        link.en
+                      )}
                     </DeadButton>
                   </li>
                 ))}
@@ -75,25 +81,11 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 text-sm text-white/60 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p>
-              <span className="lang-ga">
-                Tha Alba FA na charthannas Albannach fo riaghladh Neach-riaghlaidh Carthannais na h-Alba (OSCR)
-              </span>
-              <span className="lang-en">
-                Alba FA is a Scottish charity regulated by OSCR
-              </span>
-            </p>
-            <p>
-              <span className="lang-ga">Àireamh Carthannais: </span>
-              <span className="lang-en">Charity Number: </span>
-              SC051616
-            </p>
+            <p>Alba FA is a Scottish charity regulated by OSCR</p>
+            <p>Charity Number: SC051616</p>
           </div>
           <div>
-            <p className="font-medium text-white/80">
-              <span className="lang-ga">Leasachadh Coimhearsnachd ICT</span>
-              <span className="lang-en">ICT Community Development</span>
-            </p>
+            <p className="font-medium text-white/80">ICT Community Development</p>
             <p>Culduthel Road, Inverness IV2 6AD</p>
             <p>support@albafa.com</p>
             <p>events@albafa.com</p>

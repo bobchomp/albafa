@@ -1,7 +1,6 @@
 import AnnouncementBar from "./components/AnnouncementBar";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import UnifiedHub from "./components/UnifiedHub";
 import EuroJourney from "./components/EuroJourney";
 import JoinUs from "./components/JoinUs";
 import PillarsMarquee from "./components/PillarsMarquee";
@@ -16,7 +15,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <UnifiedHub />
         <EuroJourney />
         <JoinUs />
         <PillarsMarquee />

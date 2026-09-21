@@ -47,7 +47,7 @@ export default function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <LanguageToggle />
           <DeadButton className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
-            <span className="lang-ga">Logadh a-steach</span>
+            <span className="lang-ga">Log a-steach</span>
             <span className="lang-en">Member Login</span>
           </DeadButton>
           <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark transition hover:brightness-95">
@@ -99,7 +99,7 @@ export default function Header() {
           <div className="mt-3 flex flex-col gap-3">
             <LanguageToggle className="self-start" />
             <DeadButton className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white">
-              <span className="lang-ga">Logadh a-steach</span>
+              <span className="lang-ga">Log a-steach</span>
               <span className="lang-en">Member Login</span>
             </DeadButton>
             <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark">
