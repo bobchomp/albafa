@@ -5,13 +5,18 @@ import { useEffect, useState } from "react";
 type Lang = "ga" | "en";
 
 const FADE_MS = 220;
+// A same-page opacity crossfade has none of the parallax/translation motion
+// that prefers-reduced-motion is meant to guard against, so we keep it for
+// those users too — just quicker, rather than skipping it outright.
+const REDUCED_MOTION_FADE_MS = 80;
 
 // Shared across every LanguageToggle instance (header, mobile menu, footer)
 // so a click in one place can't race a pending fade started from another.
 let pendingFadeTimer: number | null = null;
 
-function prefersReducedMotion() {
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+function fadeDurationMs() {
+  const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+  return reduced ? REDUCED_MOTION_FADE_MS : FADE_MS;
 }
 
 // Applies the language switch instantly (no fade) — used on first load.
@@ -23,19 +28,17 @@ function applyLangNow(lang: Lang) {
 
 // Fades the page out, swaps the language while invisible, then fades back in.
 function applyLangWithFade(lang: Lang) {
-  if (prefersReducedMotion()) {
-    applyLangNow(lang);
-    return;
-  }
   if (pendingFadeTimer !== null) {
     window.clearTimeout(pendingFadeTimer);
   }
+  const duration = fadeDurationMs();
+  document.body.style.transitionDuration = `${duration}ms`;
   document.body.classList.add("lang-fading");
   pendingFadeTimer = window.setTimeout(() => {
     applyLangNow(lang);
     document.body.classList.remove("lang-fading");
     pendingFadeTimer = null;
-  }, FADE_MS) as unknown as number;
+  }, duration) as unknown as number;
 }
 
 function broadcastLang(next: Lang) {

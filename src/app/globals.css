@@ -35,12 +35,6 @@ body.lang-fading {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  body {
-    transition: none;
-  }
-}
-
 .dead-link {
   cursor: default;
 }
