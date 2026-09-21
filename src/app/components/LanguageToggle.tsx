@@ -6,6 +6,10 @@ type Lang = "ga" | "en";
 
 const FADE_MS = 220;
 
+// Shared across every LanguageToggle instance (header, mobile menu, footer)
+// so a click in one place can't race a pending fade started from another.
+let pendingFadeTimer: number | null = null;
+
 function prefersReducedMotion() {
   return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 }
@@ -23,11 +27,23 @@ function applyLangWithFade(lang: Lang) {
     applyLangNow(lang);
     return;
   }
+  if (pendingFadeTimer !== null) {
+    window.clearTimeout(pendingFadeTimer);
+  }
   document.body.classList.add("lang-fading");
-  window.setTimeout(() => {
+  pendingFadeTimer = window.setTimeout(() => {
     applyLangNow(lang);
     document.body.classList.remove("lang-fading");
-  }, FADE_MS);
+    pendingFadeTimer = null;
+  }, FADE_MS) as unknown as number;
+}
+
+function broadcastLang(next: Lang) {
+  applyLangWithFade(next);
+  try {
+    localStorage.setItem("albafa-lang", next);
+  } catch {}
+  window.dispatchEvent(new CustomEvent<Lang>("langselect", { detail: next }));
 }
 
 export default function LanguageToggle({
@@ -47,15 +63,18 @@ export default function LanguageToggle({
         applyLangNow(stored);
       }
     } catch {}
+
+    function handleSelect(e: Event) {
+      const detail = (e as CustomEvent<Lang>).detail;
+      if (detail === "ga" || detail === "en") setLang(detail);
+    }
+    window.addEventListener("langselect", handleSelect);
+    return () => window.removeEventListener("langselect", handleSelect);
   }, []);
 
   function choose(next: Lang) {
     if (next === lang) return;
-    setLang(next);
-    applyLangWithFade(next);
-    try {
-      localStorage.setItem("albafa-lang", next);
-    } catch {}
+    broadcastLang(next);
   }
 
   return (
