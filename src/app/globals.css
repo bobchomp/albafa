@@ -26,6 +26,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  transition: opacity 220ms ease;
+}
+
+body.lang-fading {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 .dead-link {

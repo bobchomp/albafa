@@ -4,10 +4,30 @@ import { useEffect, useState } from "react";
 
 type Lang = "ga" | "en";
 
-function applyLang(lang: Lang) {
+const FADE_MS = 220;
+
+function prefersReducedMotion() {
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+}
+
+// Applies the language switch instantly (no fade) — used on first load.
+function applyLangNow(lang: Lang) {
   document.documentElement.dataset.lang = lang;
   document.documentElement.lang = lang === "ga" ? "gd" : "en";
   window.dispatchEvent(new CustomEvent<Lang>("langchange", { detail: lang }));
+}
+
+// Fades the page out, swaps the language while invisible, then fades back in.
+function applyLangWithFade(lang: Lang) {
+  if (prefersReducedMotion()) {
+    applyLangNow(lang);
+    return;
+  }
+  document.body.classList.add("lang-fading");
+  window.setTimeout(() => {
+    applyLangNow(lang);
+    document.body.classList.remove("lang-fading");
+  }, FADE_MS);
 }
 
 export default function LanguageToggle({
@@ -24,14 +44,15 @@ export default function LanguageToggle({
         // One-time sync from a persisted, client-only preference on mount.
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setLang(stored);
-        applyLang(stored);
+        applyLangNow(stored);
       }
     } catch {}
   }, []);
 
   function choose(next: Lang) {
+    if (next === lang) return;
     setLang(next);
-    applyLang(next);
+    applyLangWithFade(next);
     try {
       localStorage.setItem("albafa-lang", next);
     } catch {}
