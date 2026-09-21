@@ -33,7 +33,8 @@ export default function Partners() {
     <section className="bg-cream px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy/50">
-          Com-pàirtichean | Partners
+          <span className="lang-ga">Com-pàirtichean</span>
+          <span className="lang-en">Partners</span>
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
           {partners.map((p) => (
@@ -49,7 +50,8 @@ export default function Partners() {
         </div>
 
         <p className="mt-14 text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy/50">
-          Sponsairean an Sguad | Squad Sponsors
+          <span className="lang-ga">Sponsairean an Sguad</span>
+          <span className="lang-en">Squad Sponsors</span>
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
           {sponsors.map((s) => (

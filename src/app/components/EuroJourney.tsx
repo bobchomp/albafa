@@ -12,14 +12,18 @@ export default function EuroJourney() {
       />
       <div className="relative mx-auto max-w-4xl text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-          Ar T-Slighe Euro 2024
+          Euro 2024
         </p>
         <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
-          Our Euro 2024 Journey
+          <span className="lang-ga">Ar T-Slighe Euro 2024</span>
+          <span className="lang-en">Our Euro 2024 Journey</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-sm text-white/70 sm:text-base">
-          Airson an lèine a ghabhail os làimhe agus a’ ghairm a chuir an cèill
-          &mdash; to grasp the shirt and sound the cry.
+          <span className="lang-ga">
+            Airson an lèine a ghabhail os làimhe agus a’ ghairm a chuir an
+            cèill.
+          </span>
+          <span className="lang-en">To grasp the shirt and sound the cry.</span>
         </p>
 
         <DeadButton className="group relative mx-auto mt-10 block w-full max-w-2xl overflow-hidden rounded-2xl">

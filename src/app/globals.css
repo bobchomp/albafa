@@ -44,3 +44,11 @@ body {
 .marquee {
   animation: marquee 24s linear infinite;
 }
+
+/* Language toggle: default (no attribute) shows Gaelic; [data-lang="en"] flips it. */
+html[data-lang="en"] .lang-ga {
+  display: none;
+}
+html:not([data-lang="en"]) .lang-en {
+  display: none;
+}

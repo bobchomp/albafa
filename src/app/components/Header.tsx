@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import DeadButton from "./DeadButton";
+import LanguageToggle from "./LanguageToggle";
 
 const navItems = [
-  { gaelic: "Prògraman", english: "Programmes" },
-  { gaelic: "Sgiobaidhean", english: "Teams" },
-  { gaelic: "Tachartasan", english: "Events" },
-  { gaelic: "Cuidich Sinn", english: "Support Us" },
+  { ga: "Prògraman", en: "Programmes" },
+  { ga: "Sgiobaidhean", en: "Teams" },
+  { ga: "Tachartasan", en: "Events" },
+  { ga: "Cuidich Sinn", en: "Support Us" },
 ];
 
 export default function Header() {
@@ -34,22 +35,24 @@ export default function Header() {
         <nav className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => (
             <DeadButton
-              key={item.english}
+              key={item.en}
               className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
             >
-              {item.gaelic}
-              <span className="text-white/50"> | </span>
-              {item.english}
+              <span className="lang-ga">{item.ga}</span>
+              <span className="lang-en">{item.en}</span>
             </DeadButton>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
+          <LanguageToggle />
           <DeadButton className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
-            Logadh a-steach | Member Login
+            <span className="lang-ga">Logadh a-steach</span>
+            <span className="lang-en">Member Login</span>
           </DeadButton>
           <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark transition hover:brightness-95">
-            Dèan Tabhartas | Donate
+            <span className="lang-ga">Dèan Tabhartas</span>
+            <span className="lang-en">Donate</span>
           </DeadButton>
         </div>
 
@@ -85,19 +88,23 @@ export default function Header() {
           <nav className="flex flex-col gap-1 pt-2">
             {navItems.map((item) => (
               <DeadButton
-                key={item.english}
+                key={item.en}
                 className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
               >
-                {item.gaelic} | {item.english}
+                <span className="lang-ga">{item.ga}</span>
+                <span className="lang-en">{item.en}</span>
               </DeadButton>
             ))}
           </nav>
-          <div className="mt-3 flex flex-col gap-2">
+          <div className="mt-3 flex flex-col gap-3">
+            <LanguageToggle className="self-start" />
             <DeadButton className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white">
-              Logadh a-steach | Member Login
+              <span className="lang-ga">Logadh a-steach</span>
+              <span className="lang-en">Member Login</span>
             </DeadButton>
             <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark">
-              Dèan Tabhartas | Donate
+              <span className="lang-ga">Dèan Tabhartas</span>
+              <span className="lang-en">Donate</span>
             </DeadButton>
           </div>
         </div>

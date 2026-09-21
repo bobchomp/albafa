@@ -1,7 +1,7 @@
 const pillars = [
-  { gaelic: "A Cheanglachadh", english: "Connect" },
-  { gaelic: "A Bhrosnachadh", english: "Inspire" },
-  { gaelic: "A dh’Fhàs", english: "Grow" },
+  { ga: "A Cheanglachadh", en: "Connect" },
+  { ga: "A Bhrosnachadh", en: "Inspire" },
+  { ga: "A dh’Fhàs", en: "Grow" },
 ];
 
 function PillarGroup() {
@@ -9,11 +9,11 @@ function PillarGroup() {
     <>
       {pillars.map((pillar) => (
         <span
-          key={pillar.english}
+          key={pillar.en}
           className="mx-6 inline-flex items-center gap-3 text-2xl font-extrabold uppercase tracking-wide text-white sm:text-3xl"
         >
-          <span className="text-gold">{pillar.gaelic}</span>
-          <span className="text-white/40">{pillar.english}</span>
+          <span className="lang-ga">{pillar.ga}</span>
+          <span className="lang-en">{pillar.en}</span>
           <span className="text-gold">&mdash;</span>
         </span>
       ))}

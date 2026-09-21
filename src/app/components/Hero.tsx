@@ -23,34 +23,41 @@ export default function Hero() {
         />
 
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-          Guth na Gàidhlig ann am Ball-coise
+          <span className="lang-ga">Comann Ball-Coise Alba</span>
+          <span className="lang-en">The Alba Football Alliance</span>
         </p>
         <h1 className="text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl lg:text-6xl">
-          A Voice for Gaelic in Football
+          <span className="lang-ga">Guth na Gàidhlig ann am Ball-coise</span>
+          <span className="lang-en">A Voice for Gaelic in Football</span>
         </h1>
 
         <p className="max-w-2xl text-sm text-white/80 sm:text-base">
-          Chaidh Alba FA a stèidheachadh gus ball-coise a chleachdadh mar
-          fheachd airson Gàidhlig na h-Alba a cheanglachadh, a bhrosnachadh
-          agus a dh&rsquo;fhàs tro ghnìomhachd ball-coise coimhearsnachd.
-        </p>
-        <p className="max-w-2xl text-sm text-white/70 sm:text-base">
-          The Alba FA has been established to use football as a force to
-          connect, inspire and grow Scottish Gaelic through community
-          football activity, both nationally and internationally.
+          <span className="lang-ga">
+            Chaidh Alba FA a stèidheachadh gus ball-coise a chleachdadh mar
+            fheachd airson Gàidhlig na h-Alba a cheanglachadh, a bhrosnachadh
+            agus a dh&rsquo;fhàs tro ghnìomhachd ball-coise coimhearsnachd.
+          </span>
+          <span className="lang-en">
+            The Alba FA has been established to use football as a force to
+            connect, inspire and grow Scottish Gaelic through community
+            football activity, both nationally and internationally.
+          </span>
         </p>
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <DeadButton className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy-dark transition hover:brightness-95">
-            Cuidich Alba FA | Support Alba FA
+            <span className="lang-ga">Cuidich Alba FA</span>
+            <span className="lang-en">Support Alba FA</span>
           </DeadButton>
           <DeadButton className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
-            Barrachd Ionnsachadh | Learn More
+            <span className="lang-ga">Barrachd Ionnsachadh</span>
+            <span className="lang-en">Learn More</span>
           </DeadButton>
         </div>
 
         <p className="mt-2 text-xs font-medium uppercase tracking-widest text-white/50">
-          #IsSinneAlba · #WeAreAlba
+          <span className="lang-ga">#IsSinneAlba</span>
+          <span className="lang-en">#WeAreAlba</span>
         </p>
       </div>
     </section>
