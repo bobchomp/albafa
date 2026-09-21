@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import DeadButton from "./DeadButton";
 import LanguageToggle from "./LanguageToggle";
 
@@ -7,26 +8,30 @@ const columns = [
     ga: "Prògraman",
     en: "Programmes",
     links: [
-      { ga: "Sgiobaidhean", en: "Teams" },
-      { ga: "Sgioba nam Fear", en: "Mens Team" },
-      { ga: "Cluban Coimhearsnachd", en: "Community Clubs" },
+      { ga: "Sgiobaidhean", en: "Teams", href: "/teams" },
+      { ga: "Sgioba nam Fear", en: "Mens Team", href: "/teams/mens-team" },
+      {
+        ga: "Cluban Coimhearsnachd",
+        en: "Community Clubs",
+        href: "/teams/community-clubs",
+      },
     ],
   },
   {
     ga: "Tachartasan",
     en: "Events",
     links: [
-      { ga: "Mòd 2026", en: "Mòd 2026" },
-      { ga: "Fèis Ball-Coise a’ Mhòid", en: "Mòd Youth Festival" },
+      { ga: "Mòd 2026", en: "Mòd 2026", href: null },
+      { ga: "Fèis Ball-Coise a’ Mhòid", en: "Mòd Youth Festival", href: null },
     ],
   },
   {
     ga: "Cuidich Sinn",
     en: "Support Us",
     links: [
-      { ga: null, en: "Club Lotto" },
-      { ga: "Dèan Tabhartas", en: "Donate" },
-      { ga: "Bi nad Bhall", en: "Become a Member" },
+      { ga: null, en: "Club Lotto", href: null },
+      { ga: "Dèan Tabhartas", en: "Donate", href: null },
+      { ga: "Bi nad Bhall", en: "Become a Member", href: null },
     ],
   },
 ];
@@ -60,20 +65,32 @@ export default function Footer() {
                 <span className="lang-en">{column.en}</span>
               </p>
               <ul className="flex flex-col gap-2">
-                {column.links.map((link) => (
-                  <li key={link.en}>
-                    <DeadButton className="text-left text-sm text-white/70 hover:text-white">
-                      {link.ga ? (
-                        <>
-                          <span className="lang-ga">{link.ga}</span>
-                          <span className="lang-en">{link.en}</span>
-                        </>
+                {column.links.map((link) => {
+                  const content = link.ga ? (
+                    <>
+                      <span className="lang-ga">{link.ga}</span>
+                      <span className="lang-en">{link.en}</span>
+                    </>
+                  ) : (
+                    link.en
+                  );
+                  return (
+                    <li key={link.en}>
+                      {link.href ? (
+                        <Link
+                          href={link.href}
+                          className="text-left text-sm text-white/70 hover:text-white"
+                        >
+                          {content}
+                        </Link>
                       ) : (
-                        link.en
+                        <DeadButton className="text-left text-sm text-white/70 hover:text-white">
+                          {content}
+                        </DeadButton>
                       )}
-                    </DeadButton>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

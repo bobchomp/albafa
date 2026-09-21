@@ -1,0 +1,105 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Faqs from "@/app/components/Faqs";
+import RegionCard from "./RegionCard";
+
+export const metadata: Metadata = {
+  title: "Alba FA | Community Clubs",
+  description:
+    "Find your local Alba FA Gaelic community football club across Scotland.",
+};
+
+const regions = [
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/76ca0083-5545-41c8-9659-ce1999b59dae/ALBA26-01-P04_MCH-square.png",
+    ga: "Gàidhealtachd",
+    en: "Highlands",
+  },
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/40aeed2e-5c9f-4835-9612-87042b849ed5/ALBA26-01-P06_MCH-square.png",
+    ga: "Glaschu",
+    en: "Glasgow",
+  },
+  {
+    src: "https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/aeeaa4ca-4da3-4544-9ffd-239ea899876c/ALBA26-01-P05_MCH-square.png",
+    ga: "Uibhist",
+    en: "Uist",
+  },
+];
+
+export default function CommunityClubsPage() {
+  return (
+    <>
+      <section className="relative isolate overflow-hidden bg-navy-dark px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
+        <Image
+          src="/images/hero-wallpaper-4.webp"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+        />
+        <div className="relative mx-auto max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+            Our Community
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
+            <span className="lang-ga">Comann Ballrachd</span>
+            <span className="lang-en">Membership Organisation</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-sm text-white/80 sm:text-base">
+            <span className="lang-ga">
+              Thig Alba FA gu bhith na bhuidheann ballrachd le uallach airson
+              leasachadh chluban ball-coise coimhearsnachd Gàidhlig.
+            </span>
+            <span className="lang-en">
+              The Alba FA will become a membership organisation responsible
+              for the development of Gaelic community football clubs.
+            </span>
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-white/70 sm:text-base">
+            The organisation has publicly announced Inverness-shire (FC
+            Sonas), Glasgow and Uist as founding clubs, with 3 more to
+            follow in the coming years.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl">
+          <Image
+            src="https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/b470664d-8f69-4a81-a8a0-35f82b69e9b8/alba-fa_web_gov-org-3.png"
+            alt="Diagram of the Alba FA founding clubs and their locations, with the central Alba FA logo."
+            width={824}
+            height={918}
+            className="mx-auto h-auto w-full"
+          />
+        </div>
+      </section>
+
+      <section className="bg-cream px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
+            <span className="lang-ga">
+              Clubaichean Coimhearsnachdan Ball-Coise Gàidhlig
+            </span>
+            <span className="lang-en">
+              What is a Gaelic Community Football Club?
+            </span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink/70 sm:text-base">
+            A Gaelic Community Football Club is a community-based
+            organisation committed to providing consistent football
+            activity to both fluent Gaelic speakers and language learners.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+          {regions.map((region) => (
+            <RegionCard key={region.en} {...region} />
+          ))}
+        </div>
+      </section>
+
+      <Faqs />
+    </>
+  );
+}
