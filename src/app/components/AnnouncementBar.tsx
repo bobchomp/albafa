@@ -1,6 +1,11 @@
 import DeadButton from "./DeadButton";
 
+// Temporarily hidden — flip this back to re-show the Mòd Youth Festival banner.
+const HIDDEN = true;
+
 export default function AnnouncementBar() {
+  if (HIDDEN) return null;
+
   return (
     <div className="flex flex-wrap items-center justify-center gap-2 bg-gold px-4 py-2 text-center text-xs font-semibold text-navy-dark sm:text-sm">
       <span className="lang-ga">Fèis Ball-Coise a’ Mhòid</span>

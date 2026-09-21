@@ -8,7 +8,6 @@ const columns = [
     ga: "Prògraman",
     en: "Programmes",
     links: [
-      { ga: "Sgiobaidhean", en: "Teams", href: "/teams" },
       { ga: "Sgioba nam Fear", en: "Mens Team", href: "/teams/mens-team" },
       {
         ga: "Cluban Coimhearsnachd",
