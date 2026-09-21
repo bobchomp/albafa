@@ -35,7 +35,7 @@ export default function Partners() {
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy/50">
           Com-pàirtichean | Partners
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
           {partners.map((p) => (
             <Image
               key={p.alt}
@@ -43,7 +43,7 @@ export default function Partners() {
               alt={p.alt}
               width={p.w}
               height={p.h}
-              className="h-10 w-auto object-contain opacity-80 sm:h-12"
+              className="h-14 w-auto object-contain opacity-90 sm:h-16"
             />
           ))}
         </div>
@@ -51,7 +51,7 @@ export default function Partners() {
         <p className="mt-14 text-center text-xs font-semibold uppercase tracking-[0.2em] text-navy/50">
           Sponsairean an Sguad | Squad Sponsors
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
           {sponsors.map((s) => (
             <Image
               key={s.alt}
@@ -59,7 +59,7 @@ export default function Partners() {
               alt={s.alt}
               width={300}
               height={115}
-              className="h-8 w-auto object-contain opacity-70 sm:h-9"
+              className="h-14 w-auto object-contain opacity-85 sm:h-16"
             />
           ))}
         </div>
