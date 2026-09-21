@@ -17,14 +17,6 @@ const columns = [
     ],
   },
   {
-    ga: "Tachartasan",
-    en: "Events",
-    links: [
-      { ga: "Mòd 2026", en: "Mòd 2026", href: null },
-      { ga: "Fèis Ball-Coise a’ Mhòid", en: "Mòd Youth Festival", href: null },
-    ],
-  },
-  {
     ga: "Cuidich Sinn",
     en: "Support Us",
     links: [
