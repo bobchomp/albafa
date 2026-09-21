@@ -26,7 +26,8 @@ function applyLangNow(lang: Lang) {
   window.dispatchEvent(new CustomEvent<Lang>("langchange", { detail: lang }));
 }
 
-// Fades the page out, swaps the language while invisible, then fades back in.
+// Dims and softly blurs the page, swaps the language underneath that veil,
+// then clears back to sharp — a cross-dissolve, never a full blackout.
 function applyLangWithFade(lang: Lang) {
   if (pendingFadeTimer !== null) {
     window.clearTimeout(pendingFadeTimer);

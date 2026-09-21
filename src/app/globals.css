@@ -27,11 +27,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
   opacity: 1;
-  transition: opacity 220ms ease;
+  filter: blur(0);
+  transition: opacity 220ms ease, filter 220ms ease;
 }
 
+/* A soft cross-dissolve, not a blackout: the page stays visible (just
+   dimmed and gently softened) while the language swaps underneath it,
+   so nothing ever disappears. */
 body.lang-fading {
-  opacity: 0;
+  opacity: 0.55;
+  filter: blur(3px);
   pointer-events: none;
 }
 
