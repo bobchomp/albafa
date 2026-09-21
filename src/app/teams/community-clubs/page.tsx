@@ -30,57 +30,59 @@ const regions = [
 export default function CommunityClubsPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-navy-dark px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">
+      <section className="relative isolate overflow-hidden bg-navy-dark px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <Image
           src="/images/hero-wallpaper-4.webp"
           alt=""
           fill
           className="object-cover opacity-30"
         />
-        <div className="relative mx-auto max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
-            <span className="lang-ga">Ar Coimhearsnachd</span>
-            <span className="lang-en">Our Community</span>
-          </p>
-          <h1 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
-            <span className="lang-ga">Comann Ballrachd</span>
-            <span className="lang-en">Membership Organisation</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-sm text-white/80 sm:text-base">
-            <span className="lang-ga">
-              Thig Alba FA gu bhith na bhuidheann ballrachd le uallach airson
-              leasachadh chluban ball-coise coimhearsnachd Gàidhlig.
-            </span>
-            <span className="lang-en">
-              The Alba FA will become a membership organisation responsible
-              for the development of Gaelic community football clubs.
-            </span>
-          </p>
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-white/70 sm:text-base">
-            <span className="lang-ga">
-              Tha a&rsquo; bhuidheann air ainmeachadh gu poblach gur e
-              Siorrachd Inbhir Nis (FC Sonas), Glaschu agus Uibhist na
-              clubaichean-stèidheachaidh, le 3 eile ri thighinn anns na
-              bliadhnaichean a tha romhainn.
-            </span>
-            <span className="lang-en">
-              The organisation has publicly announced Inverness-shire (FC
-              Sonas), Glasgow and Uist as founding clubs, with 3 more to
-              follow in the coming years.
-            </span>
-          </p>
-        </div>
-      </section>
+        <div className="relative mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="mx-auto w-full max-w-sm rounded-2xl bg-white p-4 lg:mx-0">
+            <Image
+              src="https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/b470664d-8f69-4a81-a8a0-35f82b69e9b8/alba-fa_web_gov-org-3.png"
+              alt="Diagram of the Alba FA founding clubs and their locations, with the central Alba FA logo."
+              width={824}
+              height={918}
+              className="h-auto w-full"
+            />
+          </div>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl">
-          <Image
-            src="https://images.squarespace-cdn.com/content/v1/6662e44c39efc81daedf9887/b470664d-8f69-4a81-a8a0-35f82b69e9b8/alba-fa_web_gov-org-3.png"
-            alt="Diagram of the Alba FA founding clubs and their locations, with the central Alba FA logo."
-            width={824}
-            height={918}
-            className="mx-auto h-auto w-full"
-          />
+          <div className="text-center lg:text-left">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold">
+              <span className="lang-ga">Ar Coimhearsnachd</span>
+              <span className="lang-en">Our Community</span>
+            </p>
+            <h1 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
+              <span className="lang-ga">Comann Ballrachd</span>
+              <span className="lang-en">Membership Organisation</span>
+            </h1>
+            <p className="mt-6 text-sm text-white/80 sm:text-base">
+              <span className="lang-ga">
+                Thig Alba FA gu bhith na bhuidheann ballrachd le uallach
+                airson leasachadh chluban ball-coise coimhearsnachd
+                Gàidhlig.
+              </span>
+              <span className="lang-en">
+                The Alba FA will become a membership organisation
+                responsible for the development of Gaelic community
+                football clubs.
+              </span>
+            </p>
+            <p className="mt-4 text-sm text-white/70 sm:text-base">
+              <span className="lang-ga">
+                Tha a&rsquo; bhuidheann air ainmeachadh gu poblach gur e
+                Siorrachd Inbhir Nis (FC Sonas), Glaschu agus Uibhist na
+                clubaichean-stèidheachaidh, le 3 eile ri thighinn anns na
+                bliadhnaichean a tha romhainn.
+              </span>
+              <span className="lang-en">
+                The organisation has publicly announced Inverness-shire (FC
+                Sonas), Glasgow and Uist as founding clubs, with 3 more to
+                follow in the coming years.
+              </span>
+            </p>
+          </div>
         </div>
       </section>
 
