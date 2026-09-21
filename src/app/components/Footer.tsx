@@ -87,8 +87,16 @@ export default function Footer() {
           <div>
             <p className="font-medium text-white/80">ICT Community Development</p>
             <p>Culduthel Road, Inverness IV2 6AD</p>
-            <p>support@albafa.com</p>
-            <p>events@albafa.com</p>
+            <p>
+              <a href="mailto:support@albafa.com" className="hover:text-white">
+                support@albafa.com
+              </a>
+            </p>
+            <p>
+              <a href="mailto:events@albafa.com" className="hover:text-white">
+                events@albafa.com
+              </a>
+            </p>
           </div>
         </div>
       </div>
