@@ -4,17 +4,21 @@ const pillars = [
   { ga: "A dh’Fhàs", en: "Grow" },
 ];
 
-function PillarGroup() {
+function PillarItems() {
   return (
     <>
       {pillars.map((pillar) => (
-        <span
-          key={pillar.en}
-          className="mx-6 inline-flex items-center gap-3 text-2xl font-extrabold uppercase tracking-wide text-white sm:text-3xl"
-        >
-          <span className="lang-ga">{pillar.ga}</span>
-          <span className="lang-en">{pillar.en}</span>
-          <span className="text-gold">&mdash;</span>
+        <span key={pillar.en} className="contents">
+          <span className="text-2xl font-extrabold uppercase tracking-wide text-white sm:text-3xl">
+            <span className="lang-ga">{pillar.ga}</span>
+            <span className="lang-en">{pillar.en}</span>
+          </span>
+          <span
+            className="text-2xl font-extrabold text-gold sm:text-3xl"
+            aria-hidden="true"
+          >
+            &mdash;
+          </span>
         </span>
       ))}
     </>
@@ -24,15 +28,9 @@ function PillarGroup() {
 export default function PillarsMarquee() {
   return (
     <div className="overflow-hidden bg-navy py-6">
-      <div className="marquee flex w-max">
-        <div className="flex shrink-0">
-          <PillarGroup />
-          <PillarGroup />
-        </div>
-        <div className="flex shrink-0">
-          <PillarGroup />
-          <PillarGroup />
-        </div>
+      <div className="marquee flex w-max items-center gap-6 sm:gap-8">
+        <PillarItems />
+        <PillarItems />
       </div>
     </div>
   );
