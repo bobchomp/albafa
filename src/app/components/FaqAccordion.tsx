@@ -7,7 +7,7 @@ const faqs = [
     ga: {
       question: "Dè th’ ann an Alba FA?",
       answer:
-        "Chaidh an Alba Football Alliance (Alba FA) a stèidheachadh gus ball-coise a chleachdadh mar fheachd a chum Gàidhlig na h-Alba a cheanglachadh, a bhrosnachadh agus a dh’fhàs tro ghnìomhachd ball-coise coimhearsnachd.",
+        "Chaidh an Alba Football Alliance (Alba FA) a stèidheachadh gus ball-coise a chleachdadh mar chuachd airson a' fas agus a bhrosnachadh Gàidhlig na h-Alba tro ball-coise coimhearsnachd.",
     },
     en: {
       question: "What is Alba FA?",
@@ -31,7 +31,7 @@ const faqs = [
     ga: {
       question: "Dè tha ann an Club Ball-Coise Coimhearsnachd Gàidhlig?",
       answer:
-        "Buidheann stèidhichte sa choimhearsnachd a tha dealasach a thaobh gnìomhachd ball-coise iomadh-ghinealach a thabhann do luchd-labhairt fileanta na Gàidhlig agus do luchd-ionnsachaidh a’ chànain ann an sgìre shònraichte.",
+        "Buidheann stèidhichte sa choimhearsnachd a tha dealasach a thaobh gnìomhachd ball-coise airson a' h-uile ginealach a thabhann do luchd-labhairt fileanta na Gàidhlig agus do luchd-ionnsachaidh a' chànain ann an sgìre shònraichte.",
     },
     en: {
       question: "What is a Gaelic Community Football Club?",
@@ -55,7 +55,7 @@ const faqs = [
     ga: {
       question: "Dè th’ ann am FC Sonas?",
       answer:
-        "Tha FC Sonas na chlub ball-coise coimhearsnachd Gàidhlig ann an Siorrachd Inbhir Nis a tha dealasach a thaobh gnìomhachd ball-coise iomadh-ghinealach chunbhalach a thabhann tro mheadhan na Gàidhlig do shluagh na sgìre.",
+        "Tha FC Sonas na chlub ball-coise coimhearsnachd Gàidhlig ann an Siorrachd Inbhir Nis a tha geall air ball-coise airson a h-uile aois tro mheadhan na Gàidhlig do na sgìre.",
     },
     en: {
       question: "What is FC Sonas?",
