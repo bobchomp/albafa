@@ -7,7 +7,9 @@ import { useEffect, useRef, useState } from "react";
 import DeadButton from "./DeadButton";
 import LanguageToggle from "./LanguageToggle";
 
-const teamsLinks = [
+type NavLink = { ga: string; en: string; href: string };
+
+const teamsLinks: NavLink[] = [
   { ga: "Sgioba Nam Fear", en: "Mens Team", href: "/teams/mens-team" },
   {
     ga: "Cluban Coimhearsnachd",
@@ -15,6 +17,13 @@ const teamsLinks = [
     href: "/teams/community-clubs",
   },
 ];
+
+const supportLinks: NavLink[] = [
+  { ga: "Lotto a’ Chlub", en: "Club Lotto", href: "/support-us/club-lotto" },
+  { ga: "Dèan Tabhartas", en: "Donate", href: "/support-us/donate" },
+];
+
+type DropdownId = "teams" | "support";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -32,30 +41,130 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
+function NavDropdown({
+  ga,
+  en,
+  links,
+  open,
+  onToggle,
+}: {
+  ga: string;
+  en: string;
+  links: NavLink[];
+  open: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+      >
+        <span className="lang-ga">{ga}</span>
+        <span className="lang-en">{en}</span>
+        <Chevron open={open} />
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-2 w-60 rounded-xl border border-white/10 bg-navy-dark p-2 shadow-xl">
+          {links.map((link) => (
+            <Link
+              key={link.en}
+              href={link.href}
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+            >
+              <span className="lang-ga">{link.ga}</span>
+              <span className="lang-en">{link.en}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MobileAccordion({
+  ga,
+  en,
+  links,
+  open,
+  onToggle,
+  onNavigate,
+}: {
+  ga: string;
+  en: string;
+  links: NavLink[];
+  open: boolean;
+  onToggle: () => void;
+  onNavigate: () => void;
+}) {
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
+      >
+        <span>
+          <span className="lang-ga">{ga}</span>
+          <span className="lang-en">{en}</span>
+        </span>
+        <Chevron open={open} />
+      </button>
+      {open && (
+        <div className="ml-3 mt-1 flex flex-col gap-1 border-l border-white/10 pl-3">
+          {links.map((link) => (
+            <Link
+              key={link.en}
+              href={link.href}
+              onClick={onNavigate}
+              className="rounded-lg px-3 py-2 text-left text-sm text-white/70 hover:bg-white/10 hover:text-white"
+            >
+              <span className="lang-ga">{link.ga}</span>
+              <span className="lang-en">{link.en}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [teamsOpen, setTeamsOpen] = useState(false);
-  const [mobileTeamsOpen, setMobileTeamsOpen] = useState(false);
-  const teamsRef = useRef<HTMLDivElement>(null);
+  const [activeDropdown, setActiveDropdown] = useState<DropdownId | null>(null);
+  const [mobileSection, setMobileSection] = useState<DropdownId | null>(null);
+  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     // Close any open menu after a navigation completes.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMenuOpen(false);
-    setTeamsOpen(false);
-    setMobileTeamsOpen(false);
+    setActiveDropdown(null);
+    setMobileSection(null);
   }, [pathname]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (teamsRef.current && !teamsRef.current.contains(e.target as Node)) {
-        setTeamsOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  function toggleDropdown(id: DropdownId) {
+    setActiveDropdown((current) => (current === id ? null : id));
+  }
+
+  function toggleMobileSection(id: DropdownId) {
+    setMobileSection((current) => (current === id ? null : id));
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-navy shadow-lg shadow-black/10">
@@ -74,49 +183,32 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav ref={navRef} className="hidden items-center gap-1 lg:flex">
           <DeadButton className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">
             <span className="lang-ga">Prògraman</span>
             <span className="lang-en">Programmes</span>
           </DeadButton>
 
-          <div className="relative" ref={teamsRef}>
-            <button
-              type="button"
-              onClick={() => setTeamsOpen((open) => !open)}
-              aria-expanded={teamsOpen}
-              aria-haspopup="true"
-              className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
-            >
-              <span className="lang-ga">Sgiobaidhean</span>
-              <span className="lang-en">Teams</span>
-              <Chevron open={teamsOpen} />
-            </button>
-            {teamsOpen && (
-              <div className="absolute left-0 top-full mt-2 w-60 rounded-xl border border-white/10 bg-navy-dark p-2 shadow-xl">
-                {teamsLinks.map((link) => (
-                  <Link
-                    key={link.en}
-                    href={link.href}
-                    onClick={() => setTeamsOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
-                  >
-                    <span className="lang-ga">{link.ga}</span>
-                    <span className="lang-en">{link.en}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+          <NavDropdown
+            ga="Sgiobaidhean"
+            en="Teams"
+            links={teamsLinks}
+            open={activeDropdown === "teams"}
+            onToggle={() => toggleDropdown("teams")}
+          />
 
           <DeadButton className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">
             <span className="lang-ga">Tachartasan</span>
             <span className="lang-en">Events</span>
           </DeadButton>
-          <DeadButton className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">
-            <span className="lang-ga">Cuidich Sinn</span>
-            <span className="lang-en">Support Us</span>
-          </DeadButton>
+
+          <NavDropdown
+            ga="Cuidich Sinn"
+            en="Support Us"
+            links={supportLinks}
+            open={activeDropdown === "support"}
+            onToggle={() => toggleDropdown("support")}
+          />
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -125,10 +217,13 @@ export default function Header() {
             <span className="lang-ga">Log a-steach</span>
             <span className="lang-en">Member Login</span>
           </DeadButton>
-          <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark transition hover:brightness-95">
+          <Link
+            href="/support-us/donate"
+            className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark transition hover:brightness-95"
+          >
             <span className="lang-ga">Dèan Tabhartas</span>
             <span className="lang-en">Donate</span>
-          </DeadButton>
+          </Link>
         </div>
 
         <button
@@ -166,44 +261,28 @@ export default function Header() {
               <span className="lang-en">Programmes</span>
             </DeadButton>
 
-            <div>
-              <button
-                type="button"
-                onClick={() => setMobileTeamsOpen((open) => !open)}
-                aria-expanded={mobileTeamsOpen}
-                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
-              >
-                <span>
-                  <span className="lang-ga">Sgiobaidhean</span>
-                  <span className="lang-en">Teams</span>
-                </span>
-                <Chevron open={mobileTeamsOpen} />
-              </button>
-              {mobileTeamsOpen && (
-                <div className="ml-3 mt-1 flex flex-col gap-1 border-l border-white/10 pl-3">
-                  {teamsLinks.map((link) => (
-                    <Link
-                      key={link.en}
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="rounded-lg px-3 py-2 text-left text-sm text-white/70 hover:bg-white/10 hover:text-white"
-                    >
-                      <span className="lang-ga">{link.ga}</span>
-                      <span className="lang-en">{link.en}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <MobileAccordion
+              ga="Sgiobaidhean"
+              en="Teams"
+              links={teamsLinks}
+              open={mobileSection === "teams"}
+              onToggle={() => toggleMobileSection("teams")}
+              onNavigate={() => setMenuOpen(false)}
+            />
 
             <DeadButton className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white">
               <span className="lang-ga">Tachartasan</span>
               <span className="lang-en">Events</span>
             </DeadButton>
-            <DeadButton className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white">
-              <span className="lang-ga">Cuidich Sinn</span>
-              <span className="lang-en">Support Us</span>
-            </DeadButton>
+
+            <MobileAccordion
+              ga="Cuidich Sinn"
+              en="Support Us"
+              links={supportLinks}
+              open={mobileSection === "support"}
+              onToggle={() => toggleMobileSection("support")}
+              onNavigate={() => setMenuOpen(false)}
+            />
           </nav>
           <div className="mt-3 flex flex-col gap-3">
             <LanguageToggle className="self-start" />
@@ -211,10 +290,14 @@ export default function Header() {
               <span className="lang-ga">Log a-steach</span>
               <span className="lang-en">Member Login</span>
             </DeadButton>
-            <DeadButton className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-navy-dark">
+            <Link
+              href="/support-us/donate"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-full bg-gold px-4 py-2 text-center text-sm font-semibold text-navy-dark"
+            >
               <span className="lang-ga">Dèan Tabhartas</span>
               <span className="lang-en">Donate</span>
-            </DeadButton>
+            </Link>
           </div>
         </div>
       )}

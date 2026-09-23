@@ -20,8 +20,8 @@ const columns = [
     ga: "Cuidich Sinn",
     en: "Support Us",
     links: [
-      { ga: null, en: "Club Lotto", href: null },
-      { ga: "Dèan Tabhartas", en: "Donate", href: null },
+      { ga: "Lotto a’ Chlub", en: "Club Lotto", href: "/support-us/club-lotto" },
+      { ga: "Dèan Tabhartas", en: "Donate", href: "/support-us/donate" },
       { ga: "Bi nad Bhall", en: "Become a Member", href: null },
     ],
   },
