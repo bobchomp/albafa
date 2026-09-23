@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Faqs from "@/app/components/Faqs";
+import { pageTitles } from "@/app/lib/pageTitles";
 import RegionCard from "./RegionCard";
 
 export const metadata: Metadata = {
-  title: "Alba FA | Community Clubs",
+  title: pageTitles["/teams/community-clubs"].ga,
   description:
     "Find your local Alba FA Gaelic community football club across Scotland.",
 };

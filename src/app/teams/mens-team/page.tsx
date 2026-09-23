@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Faqs from "@/app/components/Faqs";
+import { pageTitles } from "@/app/lib/pageTitles";
 import PlayerCard from "./PlayerCard";
 
 export const metadata: Metadata = {
-  title: "Alba FA | Mens Team",
+  title: pageTitles["/teams/mens-team"].ga,
   description:
     "Meet the Alba FA Mens Team — the Alba FA's pioneering Representative Team for Gaelic speakers.",
 };

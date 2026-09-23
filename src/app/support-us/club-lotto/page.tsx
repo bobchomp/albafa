@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Faqs from "@/app/components/Faqs";
+import { pageTitles } from "@/app/lib/pageTitles";
 
 export const metadata: Metadata = {
-  title: "Alba FA | Club Lotto",
+  title: pageTitles["/support-us/club-lotto"].ga,
   description: "Play the Alba FA Club Lotto and support Gaelic football.",
 };
 

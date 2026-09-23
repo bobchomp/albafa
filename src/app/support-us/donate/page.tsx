@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Faqs from "@/app/components/Faqs";
+import { pageTitles } from "@/app/lib/pageTitles";
 
 export const metadata: Metadata = {
-  title: "Alba FA | Donate",
+  title: pageTitles["/support-us/donate"].ga,
   description: "Support Alba FA's work connecting, inspiring and growing Scottish Gaelic through community football.",
 };
 
