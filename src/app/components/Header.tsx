@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import DeadButton from "./DeadButton";
 import LanguageToggle from "./LanguageToggle";
+import LanguageHint from "./LanguageHint";
 import {
   EVENTS_PAGE_ENABLED,
   PROGRAMMES_PAGE_ENABLED,
@@ -279,7 +280,10 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <LanguageToggle />
+          <div className="relative">
+            <LanguageToggle />
+            <LanguageHint />
+          </div>
           <DeadButton className="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10">
             <span className="lang-ga">Log a-steach</span>
             <span className="lang-en">Member Login</span>
