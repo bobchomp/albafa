@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import Faqs from "@/app/components/Faqs";
+import { SUPPORT_PAGES_ENABLED } from "@/app/lib/features";
 import { pageTitles } from "@/app/lib/pageTitles";
 
 export const metadata: Metadata = {
@@ -8,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function DonatePage() {
+  if (!SUPPORT_PAGES_ENABLED) notFound();
+
   return (
     <>
       <section className="bg-navy-dark px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-8">

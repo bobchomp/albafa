@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { SUPPORT_PAGES_ENABLED } from "@/app/lib/features";
 import { pageTitles, type Lang } from "@/app/lib/pageTitles";
 
 export default function DocumentTitle() {
@@ -10,6 +11,8 @@ export default function DocumentTitle() {
   useEffect(() => {
     const titles = pageTitles[pathname];
     if (!titles) return;
+    // Disabled pages render the 404, so leave its title alone.
+    if (!SUPPORT_PAGES_ENABLED && pathname.startsWith("/support-us/")) return;
 
     function desiredTitle() {
       const lang: Lang =

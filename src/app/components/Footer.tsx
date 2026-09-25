@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DeadButton from "./DeadButton";
 import LanguageToggle from "./LanguageToggle";
+import { SUPPORT_PAGES_ENABLED } from "@/app/lib/features";
 
 const columns = [
   {
@@ -20,8 +21,16 @@ const columns = [
     ga: "Cuidich Sinn",
     en: "Support Us",
     links: [
-      { ga: "Lotto a’ Chlub", en: "Club Lotto", href: "/support-us/club-lotto" },
-      { ga: "Dèan Tabhartas", en: "Donate", href: "/support-us/donate" },
+      {
+        ga: "Lotto a’ Chlub",
+        en: "Club Lotto",
+        href: SUPPORT_PAGES_ENABLED ? "/support-us/club-lotto" : null,
+      },
+      {
+        ga: "Dèan Tabhartas",
+        en: "Donate",
+        href: SUPPORT_PAGES_ENABLED ? "/support-us/donate" : null,
+      },
       { ga: "Bi nad Bhall", en: "Become a Member", href: null },
     ],
   },
