@@ -6,7 +6,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import DeadButton from "./DeadButton";
 import LanguageToggle from "./LanguageToggle";
-import { SUPPORT_PAGES_ENABLED } from "@/app/lib/features";
+import {
+  EVENTS_PAGE_ENABLED,
+  PROGRAMMES_PAGE_ENABLED,
+  SUPPORT_PAGES_ENABLED,
+} from "@/app/lib/features";
 
 type NavLink = { ga: string; en: string; href: string | null };
 
@@ -47,6 +51,34 @@ function Chevron({ open }: { open: boolean }) {
     >
       <path d="M6 9l6 6 6-6" />
     </svg>
+  );
+}
+
+function NavItem({
+  ga,
+  en,
+  href,
+  className,
+  onNavigate,
+}: {
+  ga: string;
+  en: string;
+  href: string | null;
+  className: string;
+  onNavigate?: () => void;
+}) {
+  const label = (
+    <>
+      <span className="lang-ga">{ga}</span>
+      <span className="lang-en">{en}</span>
+    </>
+  );
+  return href ? (
+    <Link href={href} onClick={onNavigate} className={className}>
+      {label}
+    </Link>
+  ) : (
+    <DeadButton className={className}>{label}</DeadButton>
   );
 }
 
@@ -215,10 +247,12 @@ export default function Header() {
         </Link>
 
         <nav ref={navRef} className="hidden items-center gap-1 lg:flex">
-          <DeadButton className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">
-            <span className="lang-ga">Prògraman</span>
-            <span className="lang-en">Programmes</span>
-          </DeadButton>
+          <NavItem
+            ga="Prògraman"
+            en="Programmes"
+            href={PROGRAMMES_PAGE_ENABLED ? "/programmes" : null}
+            className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+          />
 
           <NavDropdown
             ga="Sgiobaidhean"
@@ -228,10 +262,12 @@ export default function Header() {
             onToggle={() => toggleDropdown("teams")}
           />
 
-          <DeadButton className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white">
-            <span className="lang-ga">Tachartasan</span>
-            <span className="lang-en">Events</span>
-          </DeadButton>
+          <NavItem
+            ga="Tachartasan"
+            en="Events"
+            href={EVENTS_PAGE_ENABLED ? "/events" : null}
+            className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+          />
 
           <NavDropdown
             ga="Cuidich Sinn"
@@ -294,10 +330,13 @@ export default function Header() {
       {menuOpen && (
         <div className="border-t border-white/10 bg-navy px-4 pb-4 lg:hidden">
           <nav className="flex flex-col gap-1 pt-2">
-            <DeadButton className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white">
-              <span className="lang-ga">Prògraman</span>
-              <span className="lang-en">Programmes</span>
-            </DeadButton>
+            <NavItem
+              ga="Prògraman"
+              en="Programmes"
+              href={PROGRAMMES_PAGE_ENABLED ? "/programmes" : null}
+              className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
+              onNavigate={() => setMenuOpen(false)}
+            />
 
             <MobileAccordion
               ga="Sgiobaidhean"
@@ -308,10 +347,13 @@ export default function Header() {
               onNavigate={() => setMenuOpen(false)}
             />
 
-            <DeadButton className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white">
-              <span className="lang-ga">Tachartasan</span>
-              <span className="lang-en">Events</span>
-            </DeadButton>
+            <NavItem
+              ga="Tachartasan"
+              en="Events"
+              href={EVENTS_PAGE_ENABLED ? "/events" : null}
+              className="rounded-lg px-3 py-2 text-left text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white"
+              onNavigate={() => setMenuOpen(false)}
+            />
 
             <MobileAccordion
               ga="Cuidich Sinn"

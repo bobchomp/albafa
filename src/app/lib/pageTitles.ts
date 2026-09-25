@@ -5,6 +5,14 @@ export const pageTitles: Record<string, Record<Lang, string>> = {
     ga: "Alba FA | Guth na Gàidhlig ann am Ball-coise",
     en: "Alba FA | A Voice for Gaelic in Football",
   },
+  "/programmes": {
+    ga: "Alba FA | Prògraman",
+    en: "Alba FA | Programmes",
+  },
+  "/events": {
+    ga: "Alba FA | Tachartasan",
+    en: "Alba FA | Events",
+  },
   "/teams/mens-team": {
     ga: "Alba FA | Sgioba Nam Fear",
     en: "Alba FA | Mens Team",
