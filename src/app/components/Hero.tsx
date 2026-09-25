@@ -55,7 +55,7 @@ export default function Hero() {
           </DeadButton>
         </div>
 
-        <p className="mt-2 text-xs font-medium uppercase tracking-widest text-white/50">
+        <p className="mt-2 text-base font-semibold uppercase tracking-widest text-white/70 sm:text-lg">
           <span className="lang-ga">#IsSinneAlba</span>
           <span className="lang-en">#WeAreAlba</span>
         </p>
