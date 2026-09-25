@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Faqs from "@/app/components/Faqs";
+import Marquee from "@/app/components/Marquee";
 import { pageTitles } from "@/app/lib/pageTitles";
 import PlayerCard from "./PlayerCard";
 
@@ -112,38 +113,20 @@ export default function MensTeamPage() {
         </div>
       </section>
 
-      <div className="overflow-hidden bg-navy py-4">
-        <div className="marquee flex w-max items-center gap-6">
-          {Array.from({ length: 8 }).flatMap((_, i) => [
+      <div className="bg-navy py-4">
+        <Marquee repeat={10} secondsPerRepeat={6} halfClassName="gap-6 pr-6">
+          {["Connect", "Inspire", "Grow"].flatMap((word) => [
             <span
-              key={`connect-${i}`}
+              key={`${word}-word`}
               className="text-lg font-extrabold uppercase tracking-wide text-white"
             >
-              Connect
+              {word}
             </span>,
-            <span key={`dot1-${i}`} className="text-gold">
-              &bull;
-            </span>,
-            <span
-              key={`inspire-${i}`}
-              className="text-lg font-extrabold uppercase tracking-wide text-white"
-            >
-              Inspire
-            </span>,
-            <span key={`dot2-${i}`} className="text-gold">
-              &bull;
-            </span>,
-            <span
-              key={`grow-${i}`}
-              className="text-lg font-extrabold uppercase tracking-wide text-white"
-            >
-              Grow
-            </span>,
-            <span key={`dot3-${i}`} className="text-gold">
+            <span key={`${word}-dot`} className="text-gold" aria-hidden="true">
               &bull;
             </span>,
           ])}
-        </div>
+        </Marquee>
       </div>
 
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
