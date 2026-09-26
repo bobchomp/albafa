@@ -9,9 +9,9 @@ export default function Hero() {
         alt=""
         fill
         priority
-        className="object-cover opacity-70"
+        className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/70 via-navy-dark/60 to-navy-dark" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/20 via-navy-dark/10 to-navy-dark/80" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-24 text-center sm:px-6 sm:py-32 lg:py-40">
         <Image
