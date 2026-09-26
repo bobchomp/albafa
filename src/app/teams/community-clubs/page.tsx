@@ -101,7 +101,7 @@ export default function CommunityClubsPage() {
             <span className="lang-ga">
               Tha Club Ball-coise Coimhearsnachd na bhuidheann stèidhichte sa
               choimhearsnachd a tha a leasachadh cothroman ball-coise airson
-              lucid fileantaich agus luchd ionnsachaidh.
+              luchd fileantaich agus luchd ionnsachaidh.
             </span>
             <span className="lang-en">
               A Gaelic Community Football Club is a community-based
