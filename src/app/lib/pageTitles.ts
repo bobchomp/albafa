@@ -14,7 +14,7 @@ export const pageTitles: Record<string, Record<Lang, string>> = {
     en: "Alba FA | Events",
   },
   "/teams/mens-team": {
-    ga: "Alba FA | Sgioba Nam Fear",
+    ga: "Alba FA | Sgioba nam Fear",
     en: "Alba FA | Mens Team",
   },
   "/teams/community-clubs": {

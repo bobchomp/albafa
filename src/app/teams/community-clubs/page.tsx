@@ -91,7 +91,7 @@ export default function CommunityClubsPage() {
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
             <span className="lang-ga">
-              Clubaichean Coimhearsnachdan Ball-Coise Gàidhlig
+              Clubaichean Coimhearsnachd
             </span>
             <span className="lang-en">
               What is a Gaelic Community Football Club?
@@ -99,11 +99,9 @@ export default function CommunityClubsPage() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-ink/70 sm:text-base">
             <span className="lang-ga">
-              Tha Club Ball-Coise Coimhearsnachd Gàidhlig na bhuidheann
-              stèidhichte sa choimhearsnachd a tha dealasach a thaobh
-              gnìomhachd ball-coise chunbhalach a thabhann do
-              luchd-labhairt fileanta na Gàidhlig agus do
-              luchd-ionnsachaidh a&rsquo; chànain.
+              Tha Club Ball-coise Coimhearsnachd na bhuidheann stèidhichte sa
+              choimhearsnachd a tha a leasachadh cothroman ball-coise airson
+              lucid fileantaich agus luchd ionnsachaidh.
             </span>
             <span className="lang-en">
               A Gaelic Community Football Club is a community-based

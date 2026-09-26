@@ -83,7 +83,7 @@ export default function MensTeamPage() {
             Representative Teams
           </p>
           <h1 className="text-3xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
-            <span className="lang-ga">Sgioba Nam Fear</span>
+            <span className="lang-ga">Sgioba nam Fear</span>
             <span className="lang-en">Mens Team</span>
           </h1>
           <p className="max-w-2xl text-sm text-white/80 sm:text-base">
@@ -133,7 +133,7 @@ export default function MensTeamPage() {
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-navy/60">
-              <span className="lang-ga">Sgioba nam fear</span>
+              <span className="lang-ga">Sgioba nam Fear</span>
               <span className="lang-en">Men&rsquo;s Team</span>
             </p>
           </div>

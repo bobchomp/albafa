@@ -16,7 +16,7 @@ import {
 type NavLink = { ga: string; en: string; href: string | null };
 
 const teamsLinks: NavLink[] = [
-  { ga: "Sgioba Nam Fear", en: "Mens Team", href: "/teams/mens-team" },
+  { ga: "Sgioba nam Fear", en: "Mens Team", href: "/teams/mens-team" },
   {
     ga: "Cluban Coimhearsnachd",
     en: "Community Clubs",
